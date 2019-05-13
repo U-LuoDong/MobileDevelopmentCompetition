@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>后台管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="public/top" /} 
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+            {include file="public/left" /} 
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">学生信息</a>
+                    </li>
+                                        <li class="active">学生列表</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加配置" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('add')}'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                        <table class="table table-bordered table-hover">
+                            <thead class="">
+                                <tr>
+                                    <th class="text-center" width="10%">序号</th>
+                                    <th class="text-center" width="10%">院(系)部 </th>
+                                    <th class="text-center">年级</th>
+                                    <th class="text-center">专业</th>
+                                    <th class="text-center">班级</th>
+                                    <th class="text-center">学号</th>
+                                    <th class="text-center">姓名</th>
+                                    <th class="text-center">性别</th>
+                                    <th class="text-center">学生培养层次</th>
+                                    <th class="text-center" width="20%">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    {volist name="studentres" id="student"}
+                                    <tr>
+                                        <td align="center">{$student.num}</td>
+                                        <td align="center">{$student.departmentName}</td>
+                                        <td align="center">{$student.grade}</td>
+                                        <td align="center">{$student.specialtyName}</td>
+                                        <td align="center">{$student.className}</td>
+                                        <td align="center">{$student.sid}</td>
+                                        <td align="center">{$student.sname}</td>
+                                        <td align="center">{$student.sex}</td>
+                                        <td align="center">{$student.level}</td>
+                                        <td align="center">
+                                            <a href="{:url('edit',array('Sid'=>$student['sid']))}" class="btn btn-primary btn-sm shiny">
+                                                <i class="fa fa-edit"></i> 编辑
+                                            </a>
+                                            <button onclick="firm()"  class="btn btn-danger btn-sm shiny">
+									        	<i class="fa fa-trash-o"></i> 删除
+									        </button>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+
+                            </tbody>
+                        </table>
+                </div>
+                <div style="padding-top:10px;">
+                {$studentres->render()}
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script type="text/javascript">
+		function firm() {  
+	        //利用对话框返回的值 （true 或者 false）  
+	        if (confirm("确实要删除吗？")) {  
+				window.location.href='{:url('del',array('Sid'=>$student['sid']))}';
+	        }  
+	    }  
+	</script>
+
+
+</body>
+</html>

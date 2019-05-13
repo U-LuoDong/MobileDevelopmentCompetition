@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>后台管理系统</title>
+
+		<meta name="description" content="Dashboard">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<!--Basic Styles-->
+		<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+		<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+		<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+		<!--Beyond styles-->
+		<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+		<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+		<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+		<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+		<!--引入自己的CSS样式-->
+		<link rel="stylesheet" href="__ADMIN__/css/num.css" />
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		{include file="public/top" /}
+		<!-- /头部 -->
+
+		<div class="main-container container-fluid">
+			<div class="page-container">
+				<!-- Page Sidebar -->
+				{include file="public/left" /}
+				<!-- /Page Sidebar -->
+				<!-- Page Content -->
+				<div class="page-content">
+					<!-- Page Breadcrumb -->
+					<div class="page-breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">学生人数</a>
+							</li>
+							<li class="active">查询学生人数</li>
+						</ul>
+					</div>
+					<!-- /Page Breadcrumb -->
+
+					<!-- Page Body -->
+					<div class="page-body">
+
+						<div id="Layer"></div>
+						<!--遮罩层-->
+						<!--Function_1开始-->
+						<div id="Function_1_info">
+							<div class="text-center" style="background-color: rgb(45, 195, 232);color: white;width: 100%;height: 50px;line-height: 50px;">
+								信息中心
+								<button class="close" onclick="close1()" style="cursor: pointer;">x</button>
+							</div>
+							<div class="text-center" style="margin-top: 92px;">
+								<div class="text-success">
+									<span id="Function_1_specialty" class="text-warning">正在加载中...</span>
+									<span id="Function_1_cl" class="text-warning">正在加载中...</span> 的人数是：
+									<span id="Function_1_number" class="text-danger">正在加载中...</span>
+								</div>
+							</div>
+						</div>
+						<!--Function_1结束-->
+
+						<div class="row" id="Function_1">
+							<div class="col-lg-12 col-sm-12 col-xs-12">
+								<div class="widget">
+									<div class="widget-header bordered-bottom bordered-blue">
+										<span class="widget-caption">查询学生人数</span>
+									</div>
+									<div class="widget-body">
+										<div id="horizontal-form" class="form-horizontal">
+											<!--<form role="form" >-->
+											<div class="form-group">
+												<label for="group_id" class="col-sm-2 control-label no-padding-right">请选择系部:</label>
+												<div class="col-sm-6">
+													<select name="group_id">
+														<option>计算机科学与技术系</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="username" class="col-sm-2 control-label no-padding-right">请选择专业:</label>
+												<div class="col-sm-6">
+													<select name="username" id="Function_1_sp" onChange="F1_ChangeSP()">
+														<option>该项表示不对专业进行查询</option>
+														<option>计算机科学与技术</option>
+														<option>软件工程</option>
+														<option>网络工程</option>
+														<option>物联网工程</option>
+														<option>信息工程</option>
+														<option>Software Engineering(软件工程）</option>
+														<option>数据科学与大数据技术</option>
+														<option>信息工程</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="class" class="col-sm-2 control-label no-padding-right">请选择班级:</label>
+												<div class="col-sm-6">
+													<select id="Function_1_class" onChange="F1_ChangeCl()" name="class">
+														<option>该项表示不对班级进行查询</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-offset-2 col-sm-10">
+													<input id="Function_1_btn" class="btn btn-default" onclick="out1()" style=" margin-top:10px;" type="button" value="确定">
+												</div>
+											</div>
+											<!--</form>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- /Page Body -->
+				</div>
+				<!-- /Page Content -->
+			</div>
+		</div>
+
+		<!--Basic Scripts-->
+		<script src="__ADMIN__/style/jquery_002.js"></script>
+		<script src="__ADMIN__/style/bootstrap.js"></script>
+		<script src="__ADMIN__/style/jquery.js"></script>
+		<!--Beyond Scripts-->
+		<script src="__ADMIN__/style/beyond.js"></script>
+		<!--引入自己的JS-->
+		<script type="text/javascript" src="__ADMIN__/js/num.js"></script>
+	</body>
+
+</html>

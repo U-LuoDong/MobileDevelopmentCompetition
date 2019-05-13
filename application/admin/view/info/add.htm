@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+    <title>后台管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+		<!--引入自己的CSS样式-->
+		<link rel="stylesheet" href="__ADMIN__/css/add.css" />
+
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		{include file="public/top" /}
+		<!-- /头部 -->
+
+		<div class="main-container container-fluid">
+			<div class="page-container">
+				<!-- Page Sidebar -->
+				{include file="public/left" /}
+				<!-- /Page Sidebar -->
+				<!-- Page Content -->
+				<div class="page-content">
+					<!-- Page Breadcrumb -->
+					<div class="page-breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">学生信息</a>
+							</li>
+							<li>
+								<a href="{:url('lst')}">学生列表</a>
+							</li>
+							<li class="active">添加学生</li>
+						</ul>
+					</div>
+					<!-- /Page Breadcrumb -->
+
+					<!-- Page Body -->
+					<div class="page-body">
+						<div class="row">
+							<div class="col-lg-12 col-sm-12 col-xs-12">
+								<div class="widget">
+									<div class="widget-header bordered-bottom bordered-blue">
+										<span class="widget-caption">新增学生</span>
+									</div>
+									<div class="widget-body">
+										<div id="horizontal-form">
+											<form onsubmit="return check()" class="form-horizontal" role="form" action="" method="post">
+												<div class="form-group">
+													<label class="col-sm-2 control-label no-padding-right">序号</label>
+													<div class="col-sm-6">
+														<input type="text" name="Num" class="form-control" id="txt_1" placeholder="请输入学生的序号" onblur="checkNum()" ><span id="txt_1info"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label no-padding-right">年级</label>
+													<div class="col-sm-6">
+														<input type="text" id="txt_2" placeholder="请输入学生所处的年级" onblur="checkGrade()" name="Gr" class="txt form-control"><span id="txt_2info"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label no-padding-right">班级</label>
+													<div class="col-sm-6">
+														<input type="text" id="txt_3" placeholder="请输入学生的班级" onblur="checkClass()" name="Cl" class="txt form-control"><span id="txt_3info"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label no-padding-right">学号</label>
+													<div class="col-sm-6">
+														<input type="text" id="txt_4" placeholder="请输入学生的学号" onblur="checkSid()" name="Sid" class="txt form-control"><span id="txt_4info"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label no-padding-right">姓名</label>
+													<div class="col-sm-6">
+														<input type="text" id="txt_5" placeholder="请输入学生的姓名" onblur="checkSname()" name="Name" class="txt form-control"><span id="txt_5info"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label no-padding-right">性别</label>
+													<div class="col-sm-6">
+														<input type="text" id="txt_6" placeholder="请输入学生所处的性别" onblur="checkSex()" name="Sex" class="txt form-control"><span id="txt_6info"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label no-padding-right">层次</label>
+													<div class="col-sm-6">
+														<input type="text" id="txt_7" placeholder="请输入学生的培养层次" onblur="checkLevel()" name="Level" class="txt form-control"><span id="txt_7info"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<button type="submit" class="btn btn-default">确认</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- /Page Body -->
+				</div>
+				<!-- /Page Content -->
+			</div>
+		</div>
+
+		<!--Basic Scripts-->
+		<script src="__ADMIN__/style/jquery_002.js"></script>
+		<script src="__ADMIN__/style/bootstrap.js"></script>
+		<script src="__ADMIN__/style/jquery.js"></script>
+		<!--Beyond Scripts-->
+		<script src="__ADMIN__/style/beyond.js"></script>
+		<!--引入自己的JS-->
+		<script type="text/javascript" src="__ADMIN__/js/add.js"></script>
+
+	</body>
+
+</html>
