@@ -43,7 +43,6 @@ class Admin extends Common
 	public function edit($id)
     {
         $admins=db('admin')->find($id);
-
         if(request()->isPost()){
             $data=input('post.');
             $validate = \think\Loader::validate('Admin');
@@ -86,7 +85,7 @@ class Admin extends Common
 
     public function logout(){
         session(null); 
-        $this->success('退出系统成功！',url('login/index'));
+        $this->success('退出系统成功！',url('admin/login/index'));
     }
 
 

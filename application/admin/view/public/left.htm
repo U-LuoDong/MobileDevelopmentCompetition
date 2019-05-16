@@ -1,3 +1,26 @@
+<link rel="stylesheet" href="__ADMIN__/css/sphinx.css" />
+<div id="Layer_sphinx"></div>
+<!--遮罩层-->
+<!--Function_1开始-->
+<div id="Function_spinxinfo">
+	<div class="text-center" style="background-color: rgb(45, 195, 232);color: white;width: 100%;height: 50px;line-height: 50px;">
+		信息中心
+		<button class="close" onclick="close1()" style="cursor: pointer;">x</button>
+	</div>
+	<div class="text-center" style="margin-top: 92px;">
+		<div>
+			<span id="spx_info" class="text-info">正在加载中...</span>
+		</div>
+		<form action="{:url('Info/lst')}" method="post" id="spx_resultform" style="display: none;">
+			<input type="hidden" name="spx_result" id="spx_result" value="" />
+			<input type="hidden" name="flag" value="flag" /> <!--标识-->
+			<div class="text-center" style="cursor: pointer;">
+				<input type="submit" class="btn btn-info" value="显示查询结果" style="margin-top: 15px;"/>
+			</div>
+		</form>
+	</div>
+</div>
+<!--Function_1结束-->
 <div class="page-sidebar" id="sidebar">
 	<!-- Page Sidebar Header-->
 	<div class="sidebar-header-wrapper">

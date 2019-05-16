@@ -6,7 +6,7 @@ class Student extends Model//这里的模型类名要和数据库中的表名对
 {
 //软删除
 	use SoftDelete;
-	protected static $deleteTime='delete_time';
+	protected static $deleteTime='delete_time';//设置软删除的字段
 	//增加管理员
 	public function addStudent($data){
 	    if(empty($data) || !is_array($data)){

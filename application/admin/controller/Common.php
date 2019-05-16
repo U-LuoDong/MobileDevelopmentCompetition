@@ -6,7 +6,7 @@ class Common extends Controller
 {
     public function _initialize(){
         if(!session('id') || !session('name')){
-           $this->error('您尚未登录系统',url('login/index')); 
+           $this->error('您尚未登录系统',url('admin/login/index')); 
         }
         $auth=new Auth();
         $request=Request::instance();
@@ -28,8 +28,30 @@ class Common extends Controller
      * 利用sphinx全文索引，返回学生的学号
      */
     public function sphinx(){
-    	$info = input('post.info');
-    	
+		$cl = new Sphinx();
+		$cl->SphinxClient();
+    	$q = input('post.info');
+		$host = "localhost"; 
+		$port = 9312; 
+		$index = "main;delta"; //索引名称
+		$cl->SetServer ( $host, $port ); 
+		$cl->SetConnectTimeout ( 1 ); 
+		$cl->SetArrayResult ( true ); //匹配查询词中的任意一个
+		$cl->SetMatchMode(SPH_MATCH_ANY); 
+		$res = $cl->Query ( $q, $index ); 
+		//echo '<pre>';//格式化dump后的数据
+		//var_dump($res);die;
+		//echo '</pre>';
+		 if ($res['total'] == 0) {
+		 	echo json_encode("查询无果...",JSON_UNESCAPED_UNICODE);
+			die; 
+		}
+		$matches = array();
+		foreach($res['matches'] as $mvale) {
+		    $matches[] = $mvale['id'];
+		}
+		$matches_id = implode(" or st.id=", $matches);//将数组组成为一个字符串，以便在后面进行查询
+		echo json_encode($matches_id,JSON_UNESCAPED_UNICODE);//中文不转为unicode
     }
 	
 

@@ -89,12 +89,13 @@
                                         </td>
                                     </tr>
                                     {/volist}
-
                             </tbody>
                         </table>
                 </div>
                 <div style="padding-top:10px;">
-                {$studentres->render()}
+                {if condition="$mark eq 1"}
+                	{$studentres->render()}
+                {/if}
                 </div>
                 <div>
                 	                </div>
@@ -124,7 +125,7 @@
 	        }  
 	    }  
 	</script>
-
+    <script type="text/javascript" src="__ADMIN__/js/sphinx.js"></script>
 
 </body>
 </html>

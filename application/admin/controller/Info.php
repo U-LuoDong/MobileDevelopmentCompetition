@@ -6,13 +6,23 @@ use app\admin\model\Student as StudentModel;
 class Info extends Common
 {
     public function lst(){
-        $studentres=Db::field('num,de.departmentName,grade,sp.specialtyName,cl.className,sid,sname,sex,level')
-		->table(['think_student'=>'st','think_class'=>'cl','think_specialty'=>'sp','think_department'=>'de'])
-//		->where(array('sid'=>'17310320310','st.classname'=>'cl.className','cl.specialtyName'=>'sp.specialtyName','sp.departmentName'=>'de.departmentName'))
-		->where("st.classname=cl.className and cl.specialtyName=sp.specialtyName and sp.departmentName=de.departmentName")
-//		->select();
-        ->paginate(6);
-//      dump($strSql);die;
+    	$flag = input('post.flag');
+    	//判断来自那个页面
+    	if(!$flag){
+    		$studentres=Db::field('num,de.departmentName,grade,sp.specialtyName,cl.className,sid,sname,sex,level')
+			->table(['think_student'=>'st','think_class'=>'cl','think_specialty'=>'sp','think_department'=>'de'])
+			->where("st.classname=cl.className and cl.specialtyName=sp.specialtyName and sp.departmentName=de.departmentName")
+	        ->paginate(6);
+        	$this->assign('mark','1');//标识，判断是否显示分页
+    	}else{
+    		$id = input('post.spx_result');
+    		$studentres=Db::field('num,de.departmentName,grade,sp.specialtyName,cl.className,sid,sname,sex,level')
+			->table(['think_student'=>'st','think_class'=>'cl','think_specialty'=>'sp','think_department'=>'de'])
+			->where("st.classname=cl.className and cl.specialtyName=sp.specialtyName and sp.departmentName=de.departmentName
+			and (st.id=$id)")
+			->select();
+        	$this->assign('mark','0');//标识，判断是否显示分页
+    	}
         $this->assign('studentres',$studentres);
         return view();
     }
@@ -43,7 +53,8 @@ class Info extends Common
     	//根据网页的来源显示来显示不同的内容【在权限系统中换成了用隐藏的表单搞定了】
 		$url = $_SERVER['HTTP_REFERER'];//获取上个页面的url
 		//如果不是查看页面来的 而且提交了表单
-        if(request()->isPost()&&strcmp($url,'http://www.tp5.com/admin/info/find.html')){
+		//strcmp函数相同的返回0
+        if(request()->isPost()&&strcmp($url,'http://10.118.35.182/tp5/public/admin/info/find.html')){
 			//	安全防护开始
 			$Num = $Defence->clean_xss($_POST['Num']); //防注入代码   
 			$Gr = $Defence->clean_xss($_POST['Gr']); 
@@ -64,8 +75,7 @@ class Info extends Common
         }
         $Sid = $Defence->clean_xss(input('Sid')); //防注入代码
         //如果这个学生被软删除了 那么查找出来的值为null
-        $studentres=StudentModel::find($Sid);
-//      dump($studentres);die;
+        $studentres=StudentModel::where('sid',$Sid)->find();
         $this->assign('studentres',$studentres);
         return view();
     }
@@ -134,13 +144,4 @@ class Info extends Common
 	 }
     return	$this->fetch();
    }
-   //查看学生结束  
-    public function test()
-    {
-    	$Defence=new Denfence();//实例化当前的类【在本目录下的不用use引入 】
-    	$Sid = $Defence->clean_xss('06310360002'); //防注入代码
-        //如果这个学生被软删除了 那么查找出来的值为null
-        $studentres=StudentModel::find($Sid);
-        dump($studentres);die;
-    }
 }

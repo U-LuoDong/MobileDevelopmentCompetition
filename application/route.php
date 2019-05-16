@@ -13,6 +13,7 @@ return [
     '__pattern__' => [
         'name' => '\w+',
     ],
+    'login'=>'admin/login/index',
     //分组
     '[hello]'     => [
         ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],

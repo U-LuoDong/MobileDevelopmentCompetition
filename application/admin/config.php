@@ -22,7 +22,7 @@ return [
     '__PUBLIC__'=>'/public/',
     '__ROOT__' => '/',
 //  '__ADMINT__' => 'http://www.tp5.com/static/admin',//这里存放的是admin的静态资源文件
-    '__ADMIN__' => 'http://localhost/tp5/public/static/admin',//这里存放的1是admin的静态资源文件
-    '__UTI__' => 'http://localhost/tp5/public',//这里存放的是admin的静态资源文件
+    '__ADMIN__' => 'http://10.118.35.182/tp5/public/static/admin',//这里存放的1是admin的静态资源文件
+//  '__UTI__' => 'http://10.118.35.182/tp5/public',//这里存放的是admin的静态资源文件
     ],
 ];
