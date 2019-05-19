@@ -18,9 +18,11 @@ class Info extends Common
     		$id = input('post.spx_result');
     		$studentres=Db::field('num,de.departmentName,grade,sp.specialtyName,cl.className,sid,sname,sex,level')
 			->table(['think_student'=>'st','think_class'=>'cl','think_specialty'=>'sp','think_department'=>'de'])
-			->where("st.classname=cl.className and cl.specialtyName=sp.specialtyName and sp.departmentName=de.departmentName
-			and (st.id=$id)")
+			//解析变量时使用.进行连接
+			->where('st.classname=cl.className and cl.specialtyName=sp.specialtyName and sp.departmentName=de.departmentName
+			and (st.id='.$id.')')
 			->select();
+			dump($studentres);die;
         	$this->assign('mark','0');//标识，判断是否显示分页
     	}
         $this->assign('studentres',$studentres);
