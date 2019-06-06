@@ -56,8 +56,8 @@
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="" method="post">
-                        <input type="hidden" name="id" value="{$admin.id}">
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{$admin1.id}">
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">所属用户组</label>
                             <div class="col-sm-6">
@@ -72,7 +72,7 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">管理员名称</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="name" value="{$admin.name}"  type="text">
+                                <input class="form-control"  placeholder="" name="name" value="{$admin1.name}"  type="text">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -82,7 +82,22 @@
                             <div class="col-sm-6">
                                 <input class="form-control"  placeholder="" name="password" value="" type="text">
                             </div>
-                        </div>  
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
+                            <div class="col-sm-6">
+                                <input style="float:left;"  placeholder="" name="tx" type="file">
+                                <!--如果有缩略图的话就进行显示-->
+                                {if condition="$admin1['HeadPortrait'] neq ''"}
+                                <img style="float:left;" src="{$admin1.HeadPortrait}" width="30">
+                                {else /}
+                                暂无缩略图
+                                {/if}
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">保存信息</button>
