@@ -8,7 +8,9 @@ class Game extends Common
 	 * 贪吃蛇
 	 */
     public function retroSnaker()
-    {   
+    {
+        $admins=db('admin')->find(session('id'));
+        $this->assign('admin',$admins);
         return view();
 	}
 	/**
@@ -16,6 +18,8 @@ class Game extends Common
 	 */
 	public function luckyDog()
 	{
+        $admins=db('admin')->find(session('id'));
+        $this->assign('admin',$admins);
 		return view();
 	}
 	/**

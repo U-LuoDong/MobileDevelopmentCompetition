@@ -6,7 +6,11 @@ class AuthGroup extends Common
 {
     public function lst(){
         $authGroupRes=AuthGroupModel::paginate(6);
-        $this->assign('authGroupRes',$authGroupRes);
+        $admins=db('admin')->find(session('id'));
+        $this->assign(array(
+            'admin'=>$admins,
+            'authGroupRes'=>$authGroupRes,
+        ));
         return view();
     }
 
@@ -40,7 +44,11 @@ class AuthGroup extends Common
         }
         $authRule=new \app\admin\model\AuthRule();
         $authRuleRes=$authRule->authRuleTree();
-        $this->assign('authRuleRes',$authRuleRes);
+        $admins=db('admin')->find(session('id'));
+        $this->assign(array(
+            'admin'=>$admins,
+            'authRuleRes'=>$authRuleRes,
+        ));
         return view();
     }
 
@@ -76,7 +84,11 @@ class AuthGroup extends Common
         $this->assign('authgroups',$authgroups);
         $authRule=new \app\admin\model\AuthRule();
         $authRuleRes=$authRule->authRuleTree();
-        $this->assign('authRuleRes',$authRuleRes);
+        $admins=db('admin')->find(session('id'));
+        $this->assign(array(
+            'admin'=>$admins,
+            'authRuleRes'=>$authRuleRes,
+        ));
         return view();
     }
 

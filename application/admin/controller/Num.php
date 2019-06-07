@@ -6,6 +6,8 @@ class Num extends Common
 {
     public function index()
     {
+        $admins=db('admin')->find(session('id'));
+        $this->assign('admin',$admins);
         return view();
     }
      //查找学生人数
