@@ -26,8 +26,8 @@ class Info extends Common
                 ->where('st.classname=cl.className and cl.specialtyName=sp.specialtyName and sp.departmentName=de.departmentName
 			and (st.id=' . $id . ')')
                 ->select();
-            dump($studentres);
-            die;
+//            dump($studentres);
+//            die;
             $this->assign('mark', '0');//标识，判断是否显示分页
         }
         $admins = db('admin')->find(session('id'));
