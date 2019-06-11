@@ -5,10 +5,8 @@ class Index extends Common
 {
     public function index()
     {
-        return view();
-    }
-    public function test()
-    {
+        $admins=db('admin')->find(session('id'));
+        $this->assign('admin',$admins);
         return view();
     }
 }

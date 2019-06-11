@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>登录neu后台管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="__ADMIN__/css/useCode.css" /><!--引入自己的CSS样式-->
+    <link rel="icon" href="__ADMIN__/img/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+<div id="Layer"></div><!--遮罩层-->
+<div id="login">
+    <span id="login_span">neu信息管理系统</span>
+    <span id="tel_code_info"></span>
+    <br/>
+    <h3>验证码登陆</h3>
+    <div class="login_2">
+        <form onsubmit="return check()" action="" method="post"><!--action为空，默认提交表单到本页面（本方法）-->
+            <p>账号</p>
+            <P><input type="text" id="txt_1" placeholder="请输入您的手机号" onblur="checkemail()" name="tel" class="txt"><span
+                    id="txt_1info"></span></P>
+            <p>验证码</p>
+            <P><input type="text" id="img_code" placeholder="请输入图片验证码" class="txt">
+                <img onclick="shuaxin()" id="code" style="cursor: pointer; position: absolute;top: 174px;left: 219px;"
+                     src="http://10.118.35.182/tp5/public/static/admin/VerificationCode2.php"/>
+                <span id="img_code_info"></span>
+            </P>
+            <p id="tel_code_success"></p>
+            <p id="tel_code_info"></p>
+            <input type="text" id="tel_code" name="tel_code" placeholder="请输入手机验证码"/>
+            <input type="button" value="手机验证码" id="btn" onclick="time1()"/>
+            <input type="hidden" id="chimg_code" />
+<!--            <input type="text" id="chtel_code" style="display: ;"/>-->
+            <input type="hidden"  id="chtel_code">
+            <p><input type="checkbox" name="category" value="保持登陆状态" checked onclick="return false;"/>&nbsp;保持登陆状态</p>
+            <input type="submit" class="but" value="登陆"/>
+        </form>
+    </div>
+    <div class="login_3">
+        <ul>
+            <li>
+                <a href="#">忘记密码</a>
+            </li>
+            <li>
+                <a href="http://10.118.35.182/tp5/public/login.html">&nbsp&nbsp&nbsp&nbsp登录</a>
+            </li>
+        </ul>
+    </div>
+    <div class="login_4">
+        <p>使用社会化账号登陆：
+            <a href="javascript:void(0);"><img src="__ADMIN__/img/QQ截图20180123204211.png"></a>&nbsp&nbsp
+            <a href="javascript:void(0);"><img src="__ADMIN__/img/35a85edf8db1cb1339d226a4dd54564e93584bc9.jpg"></a>
+        </p>
+    </div>
+</div>
+</body>
+<!--<script src="__ADMIN__/style/jquery.js"></script>-->
+<script type="text/javascript" src="__ADMIN__/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="__ADMIN__/js/useCode.js"></script><!--引入自己的JS-->
+<script type="text/javascript" src="__ADMIN__/js/md5.js"></script><!--引入自己的JS-->
+</html>

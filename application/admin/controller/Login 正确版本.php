@@ -82,19 +82,20 @@ class Login extends Controller
     {
         header("Content-type: text/html; charset=utf-8");
         $phone = input('uPhone_Number');
-//        $phone = 13548362683;
-//        $rand = rand(1000, 9999);
-        $rand = 6666;
-        $data['result']=1;//测试
+//        $phone = "13548362683";
+        $rand = rand(1000, 9999);
+        $url = "api.chanyoo.cn/utf8/interface/send_sms.aspx?username=LuoDong&password=1121l10086&content=尊敬的用户：".$phone."，您正在操作实名认证，验证码：".$rand."，请及时提交完成认证，如不是本人操作请忽略！【学生信息后台权限管理系统】&receiver=".$phone;
+        $file = file_get_contents($url);
+        //转换xml结果
+        $xml = simplexml_load_string($file);
+        $data = json_decode(json_encode($xml), true);
         if ($data['result'] >= 0) {
             //存入数据库  【不建议】
 //			1.发送验证码需要输入图片验证码【防止别人恶意调用】
 //			2.验证码还是不要存数据库了，直接存入缓存，两分钟内有效，进行验证
 //			3.不建议使用file_get_contents进行验证发送，一般都使用curl
             //存入redis
-            Ca::store('redis')->set($phone, $rand, 120);//两分钟后过期
-//            echo Ca::store('redis')->get($phone)."</br>";
-//            session('chtel_code', $rand);
+            Ca::store('redis')->set("tel", $phone, 120);//两分钟后过期
             echo($rand);
         }else{
             echo("0");

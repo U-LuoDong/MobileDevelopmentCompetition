@@ -15,7 +15,11 @@ class Admin extends Common
             $groupTitle=$_groupTitle[0]['title'];
             $v['groupTitle']=$groupTitle;
         }
-        $this->assign('adminres',$adminres);
+        $admins=db('admin')->find(session('id'));
+        $this->assign(array(
+            'admin'=>$admins,
+            'adminres'=>$adminres,
+        ));
         return view();
 	}
 
@@ -36,13 +40,17 @@ class Admin extends Common
             return;
         }
         $authGroupRes=db('auth_group')->select();
-        $this->assign('authGroupRes',$authGroupRes);
+        $admins=db('admin')->find(session('id'));
+        $this->assign(array(
+            'admin'=>$admins,
+            'authGroupRes'=>$authGroupRes,
+        ));
         return view();
 	}
 
 	public function edit($id)
     {
-        $admins=db('admin')->find($id);
+        $admins1=db('admin')->find($id);//最好用input('get.id')来获取
         if(request()->isPost()){
             $data=input('post.');
             $validate = \think\Loader::validate('Admin');
@@ -50,7 +58,7 @@ class Admin extends Common
                 $this->error($validate->getError());
             }
             $admin=new AdminModel();
-            $savenum=$admin->saveadmin($data,$admins);
+            $savenum=$admin->saveadmin($data,$admins1);
             if($savenum == '2'){
                 $this->error('管理员用户名不得为空！');
             }
@@ -62,13 +70,17 @@ class Admin extends Common
             return;
         }
         
-        if(!$admins){
+        if(!$admins1){
             $this->error('该管理员不存在');
         }
         $authGroupAccess=db('auth_group_access')->where(array('uid'=>$id))->find();
         $authGroupRes=db('auth_group')->select();
         $this->assign('authGroupRes',$authGroupRes);
-        $this->assign('admin',$admins);
+        $admins=db('admin')->find(session('id'));//注意区分，一个是当前登录的用户，一个是要进行修改的用户
+        $this->assign(array(
+            'admin'=>$admins,
+            'admin1'=>$admins1,
+        ));
         $this->assign('groupId',$authGroupAccess['group_id']);
         return view();
 	}

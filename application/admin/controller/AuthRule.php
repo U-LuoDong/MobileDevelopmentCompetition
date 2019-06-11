@@ -16,7 +16,11 @@ class AuthRule extends Common
             return;
         }
         $authRuleRes=$authRule->authRuleTree();
-        $this->assign('authRuleRes',$authRuleRes);
+        $admins=db('admin')->find(session('id'));
+        $this->assign(array(
+            'admin'=>$admins,
+            'authRuleRes'=>$authRuleRes,
+        ));
         return view();
     }
 
@@ -39,7 +43,11 @@ class AuthRule extends Common
         }
         $authRule=new AuthRuleModel();
         $authRuleRes=$authRule->authRuleTree();
-        $this->assign('authRuleRes',$authRuleRes);
+        $admins=db('admin')->find(session('id'));
+        $this->assign(array(
+            'admin'=>$admins,
+            'authRuleRes'=>$authRuleRes,
+        ));
         return view();
     }
 
@@ -63,7 +71,9 @@ class AuthRule extends Common
         $authRule=new AuthRuleModel();
         $authRuleRes=$authRule->authRuleTree();
         $authRules=$authRule->find(input('id'));
+        $admins=db('admin')->find(session('id'));
         $this->assign(array(
+            'admin'=>$admins,
             'authRuleRes'=>$authRuleRes,
             'authRules'=>$authRules,
             ));

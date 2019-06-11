@@ -6,10 +6,14 @@ class Find extends Common
 {
     public function spe()
     {
+        $admins=db('admin')->find(session('id'));
+        $this->assign('admin',$admins);
         return view();
     }
     public function cla()
     {
+        $admins=db('admin')->find(session('id'));
+        $this->assign('admin',$admins);
         return view();
     }
     //生成系部对应的专业
