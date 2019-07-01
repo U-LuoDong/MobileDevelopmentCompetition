@@ -25,12 +25,22 @@ class Login extends Controller
 	   			$this->error("登陆账号不存在，请重新登录...");
        		}else if($result==3){
 	   			$this->error("密码不正确，请重新登录...");
-       		}else{
-       			if(input('post.category')){//没有保持登录状态  那么每次需要重新登录
+       		}else if($result==2){
+       		    //保持登录状态时：下次再进入登录界面，会自动跳转到首页【相当于自动登录】
+       			if(input('post.category')){
+                    session('state','1' );
         			$this->success('登录成功！',url('index/index'));
-				}
+				}else{
+                    session('state','0' );
+                    $this->success('登录成功！',url('index/index'));
+                }
        		}
             return;
+        }
+    	if(session("state")=='1'){//如果保持登录状态，则直接进入首页
+            $admins=db('admin')->find(session('id'));
+            $this->assign('admin',$admins);
+    	    return $this->fetch('index/index');
         }
 //  	return	$this->fetch();
 		return  view();//用这个助手函数更加简洁  还不要用controller类
