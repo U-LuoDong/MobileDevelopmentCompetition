@@ -15,17 +15,12 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/static/admin/js/sign.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="660" selection-start-column="660" selection-end-column="660" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>getCode</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,7 +44,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
+    <option name="x" value="-36" />
+    <option name="y" value="200" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -66,32 +62,6 @@
               <item name="MobileDevelopmentCompetition" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileDevelopmentCompetition" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MobileDevelopmentCompetition" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileDevelopmentCompetition" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MobileDevelopmentCompetition" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileDevelopmentCompetition" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MobileDevelopmentCompetition" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileDevelopmentCompetition" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MobileDevelopmentCompetition" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileDevelopmentCompetition" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -101,10 +71,15 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/static/admin/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../tp5-CentOS【无压缩版本】" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PHPWAMP_IN3_1\wwwroot\tp5-CentOS\MobileDevelopmentCompetition\public\static\admin\js" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -128,19 +103,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563115900283</updated>
-      <workItem from="1563115901777" duration="108000" />
+      <workItem from="1563115901777" duration="370000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108000" />
+    <option name="totallyTimeSpent" value="370000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-36" y="200" width="974" height="1047" extended-state="0" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24945295" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24945295" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -164,10 +138,13 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/public/static/admin/js/11.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/static/admin/js/sign.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="660" selection-start-column="660" selection-end-column="660" />
+          <caret column="701" selection-start-column="701" selection-end-column="701" />
         </state>
       </provider>
     </entry>
