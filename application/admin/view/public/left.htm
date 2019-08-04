@@ -47,7 +47,7 @@
                             </li>
                         </ul>                            -->
 		</li>
-		<li>
+		<li {if condition="$con eq 'Admin'"} class="open" {/if}>
 			<a href="#" class="menu-dropdown">
 				<i class="menu-icon fa fa-user"></i>
 				<span class="menu-text">管理员</span>
@@ -78,7 +78,7 @@
 			</ul>
 		</li>
 
-		<li>
+		<li {if condition="$con eq 'Num'"} class="open" {/if}>
 			<a href="#" class="menu-dropdown">
 				<i class="menu-icon glyphicon glyphicon-search"></i>
 				<span class="menu-text">学生人数</span>
@@ -95,7 +95,7 @@
 			</ul>
 		</li>
 
-		<li>
+		<li {if condition="$con eq 'Find'"} class="open" {/if}>
 			<a href="#" class="menu-dropdown">
 				<i class="menu-icon glyphicon glyphicon-zoom-in"></i>
 				<span class="menu-text">信息查询</span>
@@ -119,7 +119,7 @@
 			</ul>
 		</li>
 
-		<li>
+		<li {if condition="$con eq 'Info'"} class="open" {/if}>
 			<a href="#" class="menu-dropdown">
 				<i class="menu-icon typcn typcn-news"></i>
 				<span class="menu-text">学生信息</span>
@@ -150,7 +150,7 @@
 			</ul>
 		</li>
 
-		<li>
+		<li {if condition="$con eq 'Game'"} class="open" {/if}>
 			<a href="#" class="menu-dropdown">
 				<i class="fa fa-gamepad" style="margin-left: 10px;"></i>
 				<span class="menu-text" style="margin-left: 6px;">放松一下</span>
