@@ -93,28 +93,18 @@ class AuthRule extends Common
             $this->error('删除权限失败！');
         }
     }
-
-
-
-    
-    
-
-
-
-
-   
-
-	
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * 权限收缩时将其所有的子栏目全部隐藏【返回所有子权限的id】
+     */
+    public function ajaxlst()
+    {
+        if (request()->isAjax()) {
+            $authRuleId = input('authRuleId');
+            $sonids = model('admin/AuthRule')->getchilrenid($authRuleId);
+            echo json_encode($sonids);
+        } else {
+            $this->error('非法操作！');
+        }
+    }
 
 }

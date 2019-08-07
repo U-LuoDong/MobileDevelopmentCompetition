@@ -11,7 +11,8 @@
     <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
     <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
     <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
-
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/plus/layer/layer.js"></script>
     <!--Beyond styles-->
     <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
     <link href="__ADMIN__/style/demo.css" rel="stylesheet">
@@ -83,8 +84,8 @@
                                             <a href="{:url('edit',array('Sid'=>$student['sid']))}" class="btn btn-primary btn-sm shiny">
                                                 <i class="fa fa-edit"></i> 编辑
                                             </a>
-                                            <button onclick="firm()"  class="btn btn-danger btn-sm shiny">
-									        	<i class="fa fa-trash-o"></i> 删除
+                                            <a id="{$student['sid']}" href="javascript:void(0);" onClick="layerdel(this)" class="btn btn-danger btn-sm shiny">
+                                            <i class="fa fa-trash-o"></i> 删除
 									        </button>
                                         </td>
                                     </tr>
@@ -112,19 +113,19 @@
 	</div>
 
 	    <!--Basic Scripts-->
-    <script src="__ADMIN__/style/jquery_002.js"></script>
     <script src="__ADMIN__/style/bootstrap.js"></script>
-    <script src="__ADMIN__/style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="__ADMIN__/style/beyond.js"></script>
-    <script type="text/javascript">
-		function firm() {  
-	        //利用对话框返回的值 （true 或者 false）  
-	        if (confirm("确实要删除吗？")) {  
-				window.location.href='{:url('del',array('Sid'=>$student['sid']))}';
-	        }  
-	    }  
-	</script>
+    <script>
+        //layer删除学生
+        function layerdel(o){
+            var id=$(o).attr("id");
+            layer.confirm('确定要删除该学生吗？', {icon: 3, title:'提示'}, function(index){
+                window.location.href="del/Sid/"+id;//用模S板{:url()}不会解析参数
+                layer.close(index);
+            });
+        }
+    </script>
     <script type="text/javascript" src="__ADMIN__/js/sphinx.js"></script>
 
 </body>

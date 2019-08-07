@@ -11,13 +11,20 @@
 		<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
 		<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
 		<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
-
+        <script src="__ADMIN__/style/jquery_002.js"></script>
+        <script src="__ADMIN__/plus/layer/layer.js"></script>
 		<!--Beyond styles-->
 		<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
 		<link href="__ADMIN__/style/demo.css" rel="stylesheet">
 		<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
 		<link href="__ADMIN__/style/animate.css" rel="stylesheet">
-    
+        <style type="text/css">
+            .open {
+                border: 1px solid #ccc;
+                padding: 0 3px 0 3px;
+                cursor: pointer;
+            }
+        </style>
 </head>
 <body>
 	<!-- 头部 -->
@@ -56,6 +63,7 @@
                         <table class="table table-bordered table-hover">
                             <thead class="">
                                 <tr>
+                                    <th class="text-center" width="4%">伸缩</th>
                                     <th class="text-center" width="10%">ID</th>
                                     <th class="text-center" width="10%">排序</th>
                                     <th class="text-center">权限名称</th>
@@ -66,7 +74,8 @@
                             </thead>
                             <tbody>
                                 {volist name="authRuleRes" id="authRule"}
-                                    <tr>
+                                    <tr id="{$authRule.id}" pid="{$authRule.pid}">
+                                        <td align="center"><span class="open">+</span></td>
                                         <td align="center">{$authRule.id}</td>
                                         <td align="center"><input name="{$authRule.id}" type="text" style="width:50px; text-align:center;" value="{$authRule.sort}"></td>
                                         <td><?php if($authRule['level']!=0){echo '|';} echo str_repeat('—', $authRule['level']*3)?>{$authRule.title}</td>
@@ -76,7 +85,7 @@
                                             <a href="{:url('edit',array('id'=>$authRule['id']))}" class="btn btn-primary btn-sm shiny">
                                                 <i class="fa fa-edit"></i> 编辑
                                             </a>
-                                            <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$authRule['id']))}')" class="btn btn-danger btn-sm shiny">
+                                            <a id="{$authRule['id']}" href="javascript:void(0);" onClick="layerdel(this)" class="btn btn-danger btn-sm shiny">
                                                 <i class="fa fa-trash-o"></i> 删除
                                             </a>
                                         </td>
@@ -102,12 +111,58 @@
 	</div>
 
 	    <!--Basic Scripts-->
-    <script src="__ADMIN__/style/jquery_002.js"></script>
     <script src="__ADMIN__/style/bootstrap.js"></script>
-    <script src="__ADMIN__/style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="__ADMIN__/style/beyond.js"></script>
     
     <script type="text/javascript" src="__ADMIN__/js/sphinx.js"></script>
+    <script>
+        // 子栏目展开与收缩 开始
+        $('tr[pid!=0]').hide();//先让不是顶级栏目的隐藏
+        $('.open').click(function () {
+            var id = $(this).parents('tr').attr('id');//获取栏目id
+            if ($(this).text() == '+') {
+                $(this).text('-');
+                $('tr[pid=' + id + ']').show();//让其子栏目显示
+            } else {
+                $(this).text('+');
+                // $('tr[pid='+id+']').hide();
+                //收缩时将其所有的子栏目全部隐藏
+                $.ajax({
+                    type: "post",
+                    dataType: "json",
+                    data: {authRuleId: id},
+                    url: "{:url('AuthRule/ajaxlst')}",
+                    success: function (data) {
+                        //【返回所有子栏目的id】
+                        // alert(typeof(data));
+                        var sonids = [];
+                        var idsobj = $('tr[pid!=0]');//获取非顶级栏目【数组】
+                        //遍历【k键 v值】
+                        idsobj.each(function (k, v) {
+                            sonids.push($(this).attr('id'));//将非顶级栏目的id放到这里
+                        });
+                        //遍历点击栏目的所有子栏目
+                        $.each(data, function (k, v) {
+                            if ($.inArray(v, sonids)) {
+                                //隐藏该栏目 并改为+号
+                                $('tr[id=' + v + ']').hide();
+                                $('tr[id=' + v + ']').find('span:first').text('+');
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        // 子栏目展开与收缩 结束
 
+        //layer删除权限
+        function layerdel(o){
+            var id=$(o).attr("id");
+            layer.confirm('确定要删除该权限吗？', {icon: 3, title:'提示'}, function(index){
+                window.location.href="del/id/"+id;//用模板{:url()}不会解析参数
+                layer.close(index);
+            });
+        }
+    </script>
 </body></html>

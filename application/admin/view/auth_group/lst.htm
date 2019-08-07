@@ -11,6 +11,8 @@
 		<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
 		<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
 		<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+        <script src="__ADMIN__/style/jquery_002.js"></script>
+        <script src="__ADMIN__/plus/layer/layer.js"></script>
 
 		<!--Beyond styles-->
 		<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
@@ -78,7 +80,7 @@
                                             <a href="{:url('edit',array('id'=>$authGroup['id']))}" class="btn btn-primary btn-sm shiny">
                                                 <i class="fa fa-edit"></i> 编辑
                                             </a>
-                                            <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$authGroup['id']))}')" class="btn btn-danger btn-sm shiny">
+                                            <a id="{$authGroup['id']}" href="javascript:void(0);" onClick="layerdel(this)" class="btn btn-danger btn-sm shiny">
                                                 <i class="fa fa-trash-o"></i> 删除
                                             </a>
                                         </td>
@@ -106,14 +108,21 @@
 	</div>
 
 	    <!--Basic Scripts-->
-    <script src="__ADMIN__/style/jquery_002.js"></script>
     <script src="__ADMIN__/style/bootstrap.js"></script>
-    <script src="__ADMIN__/style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="__ADMIN__/style/beyond.js"></script>
     
     <script type="text/javascript" src="__ADMIN__/js/sphinx.js"></script>
-    
+    <script>
+        //layer删除用户组
+        function layerdel(o){
+            var id=$(o).attr("id");
+            layer.confirm('确定要删除该用户组吗？', {icon: 3, title:'提示'}, function(index){
+                window.location.href="del/id/"+id;//用模板{:url()}不会解析参数
+                layer.close(index);
+            });
+        }
+    </script>
 
 
 </body></html>
